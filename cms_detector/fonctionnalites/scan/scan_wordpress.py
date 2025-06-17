@@ -1,6 +1,7 @@
 import subprocess
 import json
-
+url= "https://www.whitehouse.gov/"
+api_token= "JCSSMzqasPnAfmHfpAO9rwmWH1pjZ1D8fy4smOninc4"
 def scan_wordpress_site(url: str, api_token: str) -> dict:
     """
     Scanne un site WordPress avec WPScan et retourne les vulnérabilités détectées.
@@ -67,3 +68,6 @@ def scan_wordpress_site(url: str, api_token: str) -> dict:
     except json.JSONDecodeError:
         print("[!] Impossible de décoder la sortie JSON.")
         return {"erreur": "Sortie non valide de WPScan"}
+    
+result = scan_wordpress_site(url, api_token)
+print(result)

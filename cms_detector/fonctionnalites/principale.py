@@ -13,7 +13,7 @@ def detect_and_scan_cms(url: str):
 
     from .detections.detection_wordpress import is_wordpress_site
     from .scan.scan_wordpress import scan_wordpress_site
-    from .detections.detection_prestashop import detection_prestashop
+    from .detections.detection_prestashop import is_prestashop_site
     from .scan.scan_prestashop import scan_prestashop
 
     # Étape 1 : Détection WordPress
@@ -23,7 +23,7 @@ def detect_and_scan_cms(url: str):
         return {"cms": "wordpress", "resultat": result}
 
     # Étape 2 : Détection PrestaShop
-    elif detection_prestashop(url) == "oui":
+    elif is_prestashop_site(url) == "oui":
         print("[✔] PrestaShop détecté.")
         result = scan_prestashop(url)
         return {"cms": "prestashop", "resultat": result}
